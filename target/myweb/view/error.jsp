@@ -10,8 +10,6 @@
     <title>Error!</title>
     <!-- Bootstrap -->
     <link href="<%=path%>/libs/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <!-- 登陆页面样式 -->
-    <link href="<%=path%>/libs/bootstrap/css/signin.css" rel="stylesheet">
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="<%=path%>/libs/jquery-ui/jquery-ui.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->

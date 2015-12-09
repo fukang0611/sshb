@@ -14,37 +14,55 @@
     <link href="<%=path%>/libs/formValidator/bootstrapValidator.css" rel="stylesheet">
 </head>
 <body>
-<div class="jumbotron">
+<nav class="navbar navbar-default">
     <div class="container">
-        <h1>Hello 小伙伴 !</h1>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Project name</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="../navbar/">Default</a></li>
+                <li><a href="../navbar-static-top/">Static top</a></li>
+                <li class="active"><a href="./">Fixed top <span class="sr-only">(current)</span></a></li>
+            </ul>
+        </div>
+        <!--/.nav-collapse -->
+    </div>
+</nav>
 
-        <p>内藏大量<b>福利!</b>慎入!</p>
+<div class="container">
 
-        <p><a class="btn btn-primary" href="javascript:register();" role="button">没有帐号? 注册 &raquo;</a></p>
+    <!-- Main component for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <iframe src="http://www.google.cn/maps/embed?pb=!1m14!1m12!1m3!1d52454.81279408942!2d113.61068042632832!3d34.74486528798541!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1szh-CN!2scn!4v1449386987344"
+                width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
     </div>
 </div>
-<div class="container">
-    <form id="loginForm" style="margin:auto;max-width: 300px" method="post" action="<%=path%>/login/check.do">
-        <div class="form-group">
-            <label class="control-label">USERNAME:</label>
-            <input type="text" class="form-control " name="username" placeholder="Input username..." autofocus>
-        </div>
-        <div class="form-group">
-            <label class="control-label">PSSWORD:</label>
-            <input type="password" class="form-control " name="password" placeholder="Input password...">
-        </div>
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary" style=" width:60%;float: left">LOGIN</button>
-            <button type="button" class="btn btn-info" style="float: right" onclick="register();">REGISTER</button>
-        </div>
-    </form>
-</div>
-<hr>
-<div class="container">
-    <footer>
-        <p style="text-align: center;">&copy; All Rights gui Fukang 2015. 版权没有.翻版不究.</p>
-    </footer>
-</div>
+<!-- /container -->
+
 <!-- jquery core -->
 <script src="<%=path%>/libs/jquery/jquery-1.11.3.min.js"></script>
 <!-- Bootstrap core -->
@@ -54,59 +72,7 @@
 <!-- javascript functions -->
 <script type="text/javascript">
     $(document).ready(function () {
-        initValidate();
     });
-    function initValidate() {
-        $('#loginForm').
-                bootstrapValidator({
-                    message: 'This value is not valid',
-                    feedbackIcons: {
-                        valid: 'glyphicon glyphicon-ok',
-                        invalid: 'glyphicon glyphicon-remove',
-                        validating: 'glyphicon glyphicon-refresh'
-                    },
-                    fields: {
-                        username: {
-                            message: 'The username is not valid',
-                            validators: {
-                                notEmpty: {
-                                    message: 'The username is required and can\'t be empty'
-                                },
-                                stringLength: {
-                                    min: 6,
-                                    max: 30,
-                                    message: 'The username must be more than 6 and less than 30 characters long'
-                                },
-                                regexp: {
-                                    regexp: /^[a-zA-Z0-9_\.]+$/,
-                                    message: 'The username can only consist of alphabetical, number, dot and underscore'
-                                }
-                            }
-                        },
-                        password: {
-                            validators: {
-                                notEmpty: {
-                                    message: 'The password is required and can\'t be empty'
-                                }
-                            }
-                        }
-                    }
-                })
-                .on('success.form.bv', function (e) {
-                    e.preventDefault();
-                    var $form = $(e.target);
-                    var bv = $form.data('bootstrapValidator');
-                    $.post($form.attr('action'), $form.serialize(), function (result) {
-                        if (result.status == "success") {
-                            bv.resetForm();
-                            window.location.href = "<%=path%>/view/index.jsp";
-                        }
-                    }, 'json');
-                });
-    }
-    function register() {
-        window.location.href = "<%=path%>/view/register.jsp";
-    }
 </script>
 </body>
 </html>

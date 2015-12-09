@@ -61,9 +61,9 @@
                                     message: 'The username is required and can\'t be empty'
                                 },
                                 stringLength: {
-                                    min: 6,
+                                    min: 2,
                                     max: 30,
-                                    message: 'The username must be more than 6 and less than 30 characters long'
+                                    message: 'The username must be more than 2 and less than 30 characters long'
                                 },
                                 remote: {
                                     url: '<%=path%>/login/validateUser.do',
@@ -81,9 +81,9 @@
                                     message: 'The password is required and can\'t be empty'
                                 },
                                 stringLength: {
-                                    min: 6,
+                                    min: 2,
                                     max: 15,
-                                    message: 'The password must be more than 6 and less than 15 characters long'
+                                    message: 'The password must be more than 2 and less than 15 characters long'
                                 }
                             }
                         },
